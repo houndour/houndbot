@@ -16,10 +16,10 @@ client.on('message', (msg: Discord.Message) => {
     axios.get(`https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${msg.content.substr(7)}?api_key=RGAPI-70f05a8e-baeb-4a34-8fe7-840965235dc2`)
     .then(function (response) {
         // handle success
-        console.log(response.data.summonerLevel);
+        console.log(response.data.profileIconId);
         const menssage = new Discord.RichEmbed()
             .setColor("#0099ff")
-            .setTitle("")
+            .setImage(`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${response.data.profileIconId}.png`)
             .addField(msg.content.substr(7), response.data.summonerLevel, true);
 
             msg.channel.send(menssage);
