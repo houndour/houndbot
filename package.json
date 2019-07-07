@@ -1,0 +1,28 @@
+{
+  "name": "houndbot",
+  "version": "0.1.0",
+  "description": "A discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houndour/houndbot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discord-bot"
+  ],
+  "author": "Houndour",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/houndour/houndbot/issues"
+  },
+  "homepage": "https://github.com/houndour/houndbot#readme",
+  "dependencies": {
+    "@types/node": "^12.0.12",
+    "discord.js": "^11.5.1"
+  }
+}
