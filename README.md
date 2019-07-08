@@ -10,6 +10,9 @@ npm install
 
 # run
 npm start
+
+# run (with auto-restart)
+npm watch
 ```
 
 ## Built With

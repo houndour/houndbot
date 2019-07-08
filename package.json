@@ -4,7 +4,8 @@
   "description": "A discord bot",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "watch": "nodemon --watch dist --exec \"node dist/index.js\""
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,8 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.9.4",
     "sequelize-typescript": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
