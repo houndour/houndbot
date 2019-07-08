@@ -1,41 +1,37 @@
+import fs from 'fs';
 import dotenv from 'dotenv';
 import Discord from 'discord.js';
-import { SummonerApi } from './api/summoner';
+import logger from './utils/logger';
 
 dotenv.config();
 const client = new Discord.Client();
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+// Loading commands
+const commands: Discord.Collection<string, command> = new Discord.Collection();
+const commandFiles = fs.readdirSync(__dirname + '/commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+  const command = require(__dirname + `/commands/${file}`).default;
+  commands.set(command.name, command);
+}
+
+client.on('message', async (message: Discord.Message) => {
+  if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
+
+  const args = message.content.slice(process.env.PREFIX.length + 1).split(/ +/);
+  const command = args.shift().toLowerCase();
+
+  if (!commands.has(command)) return;
+
+  try {
+    commands.get(command).execute(message, args);
+  } catch (error) {
+    logger('command', error, 'error');
+    message.reply('houve um problema ao executar este comando.');
+  }
 });
 
-const prefix = "h!";
-client.on('message', async (msg: Discord.Message) => {
-  if (msg.content.startsWith(prefix + "level")) {
-    try {
-      const summonerResp = await SummonerApi.getSummonerByName(msg.content.substr(7));
-
-      const leagueResp = await SummonerApi.getSummonerRank(summonerResp.data.id);
-      let queue = 0;
-      for (let i = 0; i < leagueResp.data.length; i++) {
-        if (leagueResp.data[i].queueType == 'RANKED_SOLO_5x5') {
-          queue = i;
-          break;
-        }
-      }
-
-      const menssage = new Discord.RichEmbed()
-        .setColor("#0099ff")
-        .setImage(`http://ddragon.leagueoflegends.com/cdn/9.2.1/img/profileicon/${summonerResp.data.profileIconId}.png`)
-        .addField(`${summonerResp.data.name}`, `Level: ${summonerResp.data.summonerLevel}`, true)
-        .addField('Rank', `${leagueResp.data[queue].tier} ${leagueResp.data[queue].rank} ${leagueResp.data[queue].leaguePoints} PDL`);
-
-      msg.channel.send(menssage);
-    }
-    catch (err) {
-      msg.reply('não encontrei um summoner com este nome.');
-    }
-  }
+client.on('ready', () => {
+  logger('start', `Logged in as ${client.user.tag}!`, 'info');
 });
 
 client.login(process.env.BOT_TOKEN);
