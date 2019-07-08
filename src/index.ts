@@ -13,25 +13,18 @@ const prefix = "h!";
 client.on('message', (msg: Discord.Message) => {
   if (msg.content.startsWith(prefix + "level")) {
 
-    axios.get(`https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${msg.content.substr(7)}?api_key=RGAPI-70f05a8e-baeb-4a34-8fe7-840965235dc2`)
-    .then(function (response) {
+    axios.get(`https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${msg.content.substr(7)}?api_key=${process.env.API_KEY}`)
+      .then(function (response) {
         // handle success
         console.log(response.data.profileIconId);
         const menssage = new Discord.RichEmbed()
-            .setColor("#0099ff")
-            .setImage(`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${response.data.profileIconId}.png`)
-            .addField(msg.content.substr(7), response.data.summonerLevel, true);
+          .setColor("#0099ff")
+          .setImage(`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${response.data.profileIconId}.png`)
+          .addField(msg.content.substr(7), response.data.summonerLevel, true);
 
-            msg.channel.send(menssage);
+        msg.channel.send(menssage);
       })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-    });
   }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.BOT_TOKEN);
