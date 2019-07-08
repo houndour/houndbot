@@ -15,4 +15,18 @@ export class SummonerApi {
       logger('summoner', err, 'error');
     }
   }
+
+  /**
+   * Get the summoner rank
+   * @param {string} id - The id of the summoner
+   */
+  static async getSummonerRank(id: number): Promise<AxiosResponse<any>> {
+    try {
+      const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${process.env.API_KEY}`);
+      return response;
+    }
+    catch (err) {
+      logger('summoner', err, 'error');
+    }
+  }
 }
