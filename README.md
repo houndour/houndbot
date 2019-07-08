@@ -12,7 +12,7 @@ npm install
 npm start
 
 # run (with auto-restart)
-npm watch
+npm run watch
 ```
 
 ## Built With
