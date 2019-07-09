@@ -9,3 +9,6 @@ logs/
 
 # environment variables, never commit this file
 .env
+
+# development database
+database.sqlite

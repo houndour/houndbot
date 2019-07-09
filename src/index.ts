@@ -2,9 +2,15 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import Discord from 'discord.js';
 import logger from './utils/logger';
+import databaseLoader from './database';
 
 dotenv.config();
 const client = new Discord.Client();
+
+// Loading database
+(async () => {
+  await databaseLoader();
+})();
 
 // Loading commands
 const commands: Discord.Collection<string, command> = new Discord.Collection();
