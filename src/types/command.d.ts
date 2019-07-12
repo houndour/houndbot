@@ -1,5 +1,5 @@
 interface command {
   name: string;
   description: string;
-  execute(message: any, args: string[]): void;
+  execute(message: unknown, args: string[]): void;
 }

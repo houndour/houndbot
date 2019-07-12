@@ -12,12 +12,12 @@ export default {
 
     try {
       const name = args.join(' ');
-      const summonerResp = await SummonerApi.getSummonerByName(name);
+      const summoner = await SummonerApi.getSummonerByName(name);
+      const summonerLeague = await SummonerApi.getSummonerRank(summoner.id);
 
-      const leagueResp = await SummonerApi.getSummonerRank(summonerResp.data.id);
       let queue = 0;
-      for (let i = 0; i < leagueResp.data.length; i++) {
-        if (leagueResp.data[i].queueType == 'RANKED_SOLO_5x5') {
+      for (let i = 0; i < summonerLeague.length; i++) {
+        if (summonerLeague[i].queueType == 'RANKED_SOLO_5x5') {
           queue = i;
           break;
         }
@@ -25,9 +25,9 @@ export default {
 
       const menssage = new Discord.RichEmbed()
         .setColor("#0099ff")
-        .setImage(`http://ddragon.leagueoflegends.com/cdn/9.2.1/img/profileicon/${summonerResp.data.profileIconId}.png`)
-        .addField(`${summonerResp.data.name}`, `Level: ${summonerResp.data.summonerLevel}`, true)
-        .addField('Rank', `${leagueResp.data[queue].tier} ${leagueResp.data[queue].rank} ${leagueResp.data[queue].leaguePoints} PDL`);
+        .setImage(`http://ddragon.leagueoflegends.com/cdn/9.13.1/img/profileicon/${summoner.profileIconId}.png`)
+        .addField(`${summoner.name}`, `Level: ${summoner.summonerLevel}`, true)
+        .addField('Rank', `${summonerLeague[queue].tier} ${summonerLeague[queue].rank} ${summonerLeague[queue].leaguePoints} PDL`);
 
       message.channel.send(menssage);
     }
