@@ -25,7 +25,7 @@ export default {
 
       const menssage = new Discord.RichEmbed()
         .setColor("#0099ff")
-        .setImage(`http://ddragon.leagueoflegends.com/cdn/9.13.1/img/profileicon/${summoner.profileIconId}.png`)
+        .setThumbnail(`http://ddragon.leagueoflegends.com/cdn/9.13.1/img/profileicon/${summoner.profileIconId}.png`)
         .addField(`${summoner.name}`, `Level: ${summoner.summonerLevel}`, true)
         .addField('Rank', `${summonerLeague[queue].tier} ${summonerLeague[queue].rank} ${summonerLeague[queue].leaguePoints} PDL`);
 
