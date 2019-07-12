@@ -30,6 +30,7 @@
     "axios": "^0.19.0",
     "discord.js": "^11.5.1",
     "dotenv": "^8.0.0",
+    "lodash": "^4.17.14",
     "log4js": "^4.4.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.9.4",
