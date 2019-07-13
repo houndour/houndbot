@@ -26,6 +26,15 @@ client.on('message', async (message: Discord.Message) => {
   const args = message.content.slice(process.env.PREFIX.length + 1).split(/ +/);
   const command = args.shift().toLowerCase();
 
+  if (command === 'help') {
+    let commandList = '\n**Lista de comandos**\n';
+    for (const cmd of commands) {
+      commandList += `\n${process.env.PREFIX} ${cmd[1].name} - ${cmd[1].description}`;
+    }
+    message.reply(commandList);
+    return;
+  }
+
   if (!commands.has(command)) return;
 
   try {
