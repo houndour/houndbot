@@ -15,6 +15,7 @@ export default {
       embed.addField(champion.name, champion.title);
     }
 
+    embed.footer = { text: 'Note: You can only choose one, once. After this you\'ll have to fight in order to acquire new champions.' };
     message.channel.send(embed);
   }
 };
