@@ -14,6 +14,10 @@ cp .env.example .env
 # config the env variables (you can use any editor)
 nano .env
 
+# run the project once (so it can create the tables)
+# and then run the seeds (only first time)
+sequelize db:seed:all
+
 # run
 npm start
 
