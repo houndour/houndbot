@@ -1,6 +1,6 @@
-import { Table, Column, Model, AllowNull, PrimaryKey } from 'sequelize-typescript';
+import { Table, Column, Model, AllowNull, Default, PrimaryKey } from 'sequelize-typescript';
 
-@Table({ tableName: 'champions' })
+@Table({ tableName: 'champions', timestamps: false })
 export default class Champion extends Model<Champion> {
   @AllowNull(false)
   @PrimaryKey
@@ -10,4 +10,12 @@ export default class Champion extends Model<Champion> {
   @AllowNull(false)
   @Column
   name!: string;
+
+  @Column
+  title!: string;
+
+  @Default(false)
+  @AllowNull(false)
+  @Column({ field: 'is_starter' })
+  isStarter!: boolean;
 }
