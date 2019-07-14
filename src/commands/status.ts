@@ -2,7 +2,7 @@ import Discord from 'discord.js';
 import { SummonerApi } from '../api/summoner';
 
 export default {
-  name: 'level',
+  name: 'status',
   description: 'Show info about summoner account',
   async execute(message: Discord.Message, args: string[]) {
     if (args.length < 1) {

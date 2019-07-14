@@ -33,7 +33,7 @@
     "lodash": "^4.17.14",
     "log4js": "^4.4.0",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^5.9.4",
+    "sequelize": "^5.10.1",
     "sequelize-typescript": "^1.0.0-beta.3"
   },
   "devDependencies": {
