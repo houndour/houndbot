@@ -15,7 +15,7 @@ export default class UserChampion extends Model<UserChampion> {
   @ForeignKey(() => Champion)
   @AllowNull(false)
   @Column({ field: 'champion_id' })
-  itemId!: number;
+  championId!: number;
 
   @BelongsTo(() => Champion, { onDelete: 'CASCADE' })
   champion!: Champion;
