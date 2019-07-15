@@ -7,8 +7,16 @@ export default {
   name: 'choose',
   description: 'Choose your first champion to start your journey',
   async execute(message: Discord.Message, args: string[]) {
-    let user = await User.findOne({ where: { discordId: message.author.id } });
-    if (user) {
+    const userChampion = await UserChampion.count({
+      include: [{
+        model: User,
+        where: {
+          discordId: message.author.id,
+        },
+      }],
+    });
+
+    if (userChampion > 0) {
       message.reply('you\'ve already chosen a champion');
       return;
     }
@@ -26,7 +34,7 @@ export default {
       return;
     }
 
-    user = await User.create({
+    User.create({
       discordId: message.author.id, champions: [{
         championId: champion.id,
         level: 1,
