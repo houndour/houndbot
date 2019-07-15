@@ -7,7 +7,7 @@ export default {
   name: 'choose',
   description: 'Choose your first champion to start your journey',
   async execute(message: Discord.Message, args: string[]) {
-    let user = await User.findOne({ where: { discord_id: message.author.id } });
+    let user = await User.findOne({ where: { discordId: message.author.id } });
     if (user) {
       message.reply('you\'ve already chosen a champion');
       return;
@@ -16,7 +16,7 @@ export default {
     const championName = args.join(' ');
     const champion = await Champion.findOne({
       where: {
-        is_starter: true,
+        isStarter: true,
         name: championName,
       },
     });

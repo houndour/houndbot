@@ -10,7 +10,7 @@ export default {
     embed.description = '**Welcome to the discord of legends**\n';
     embed.description += `To begin to play, choose a champion with **${process.env.PREFIX} choose {champion}**\n`;
 
-    const champions = await Champion.findAll({ where: { is_starter: true } });
+    const champions = await Champion.findAll({ where: { isStarter: true } });
     for (const champion of champions) {
       embed.addField(champion.name, champion.title);
     }
