@@ -39,6 +39,7 @@ export default {
         championId: champion.id,
         level: 1,
         experience: 0,
+        selected: true,
       }]
     }, {
         include: [

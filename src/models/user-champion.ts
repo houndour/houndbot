@@ -1,6 +1,6 @@
 import User from './user';
 import Champion from './champion';
-import { Table, Column, Model, BelongsTo, ForeignKey, AllowNull } from 'sequelize-typescript';
+import { Table, Column, Model, BelongsTo, ForeignKey, AllowNull, Default } from 'sequelize-typescript';
 
 @Table({ tableName: 'user_champions' })
 export default class UserChampion extends Model<UserChampion> {
@@ -27,4 +27,9 @@ export default class UserChampion extends Model<UserChampion> {
   @AllowNull(false)
   @Column
   experience!: number;
+
+  @Default(false)
+  @AllowNull(false)
+  @Column
+  selected!: boolean;
 }
