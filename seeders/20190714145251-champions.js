@@ -4,18 +4,18 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('champions', [{
       id: 1,
-      name: 'annie',
-      title: 'the dark child',
+      name: 'Annie',
+      title: 'The dark child',
       is_starter: true,
     }, {
       id: 2,
-      name: 'olaf',
-      title: 'the berserker',
+      name: 'Olaf',
+      title: 'The berserker',
       is_starter: true,
     }, {
       id: 3,
-      name: 'galio',
-      title: 'the colossus',
+      name: 'Galio',
+      title: 'The colossus',
       is_starter: true,
     }], {});
   },
