@@ -34,7 +34,7 @@ export default {
       .setColor("#0099ff");
 
     for (const c of user.champions) {
-      menssage.addField(c.champion.name, `Level: ${c.level}`)
+      menssage.addField(`${c.champion.name} - ${c.champion.title}`, `Level: ${c.level}`)
     }
 
     message.channel.send(menssage);
