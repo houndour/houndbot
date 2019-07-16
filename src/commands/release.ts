@@ -13,7 +13,7 @@ export default {
     }
 
     const championName = args.join(' ');
-    let user = await User.findOne({
+    const user = await User.findOne({
       where: {
         discordId: message.author.id,
       },
