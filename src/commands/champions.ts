@@ -7,7 +7,7 @@ export default {
   name: 'champions',
   description: 'List all champions acquired',
   async execute(message: Discord.Message, args: string[]) {
-    let user = await User.findOne({
+    const user = await User.findOne({
       where: {
         discordId: message.author.id,
       },
