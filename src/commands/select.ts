@@ -41,6 +41,12 @@ export default {
     userChampion.selected = true;
     userChampion.save();
 
-    message.reply(`${userChampion.champion.name} is your selected champion now.`);
+    const embedMessage = new Discord.RichEmbed({ title: `Your selected champion now is:` });
+    embedMessage.setColor('#0099ff');
+    embedMessage.addField(`${userChampion.champion.name}`, `${userChampion.champion.title}`);
+    embedMessage.setThumbnail(`http://ddragon.leagueoflegends.com/cdn/9.13.1/img/champion/${userChampion.champion.name}.png`);
+    embedMessage.addField('Level', userChampion.level, true);
+
+    message.channel.send(embedMessage);
   }
 };

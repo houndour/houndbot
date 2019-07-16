@@ -29,14 +29,13 @@ export default {
       return;
     }
 
-    const menssage = new Discord.RichEmbed()
-      .setTitle("Champions")
-      .setColor("#0099ff");
+    const embedMessage = new Discord.RichEmbed().setTitle('Champions').setColor('#0099ff');
+    embedMessage.setThumbnail(message.author.displayAvatarURL);
 
     for (const c of user.champions) {
-      menssage.addField(`${c.champion.name} - ${c.champion.title}`, `Level: ${c.level}`)
+      embedMessage.addField(`${c.champion.name} - ${c.champion.title}`, `Level: ${c.level}`);
     }
 
-    message.channel.send(menssage);
+    message.channel.send(embedMessage);
   }
 }

@@ -56,6 +56,15 @@ export default {
         });
     }
 
+    const embedMessage = new Discord.RichEmbed();
+    embedMessage.setColor('#0099ff');
+    embedMessage.setThumbnail(message.author.displayAvatarURL);
+    embedMessage.addField(champion.name, champion.title, true);
+    embedMessage.addField('Level', userChampion.level, true);
+    embedMessage.addField('Experience', `${userChampion.experience}/${userChampion.level * 10}`, true);
+    embedMessage.setImage(`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_0.jpg`);
+
+    await message.channel.send(embedMessage);
     message.reply(`congratulations! You've chosen ${champion.name} as your starter champion.`);
   }
 };
