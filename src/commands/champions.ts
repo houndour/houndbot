@@ -20,12 +20,12 @@ export default {
     });
 
     if (!user) {
-      message.reply('You have not started your journey yet. Start with the command: Start.');
+      message.reply(`you have not started your journey yet. use: ${process.env.PREFIX} start`);
       return;
     }
 
-    if (!user.champions) {
-      message.reply('You do not have any Champions yet.');
+    if (!user.champions.length) {
+      message.reply('you do not have any champions yet');
       return;
     }
 
