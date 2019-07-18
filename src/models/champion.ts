@@ -1,4 +1,5 @@
-import { Table, Column, Model, AllowNull, Default, PrimaryKey } from 'sequelize-typescript';
+import ChampionAbility from './champion-ability';
+import { Table, Column, Model, AllowNull, Default, PrimaryKey, HasMany } from 'sequelize-typescript';
 
 @Table({ tableName: 'champions', timestamps: false })
 export default class Champion extends Model<Champion> {
@@ -18,4 +19,7 @@ export default class Champion extends Model<Champion> {
   @AllowNull(false)
   @Column({ field: 'is_starter' })
   isStarter!: boolean;
+
+  @HasMany(() => ChampionAbility)
+  abilities!: ChampionAbility[];
 }
