@@ -18,6 +18,21 @@ export class ActiveDuel {
     this.startDate = new Date();
     activeDuels.push(this);
   }
+
+  /**
+   * Add a participant to the duel
+   * @param participant - The user who will be added to the duel
+   */
+  public addParticipant(participant: Discord.User): void {
+    this.participants.push(participant);
+  }
+
+  /**
+   * Destroy the duel instance
+   */
+  public destroy(): void {
+    activeDuels.splice(activeDuels.indexOf(this), 1);
+  }
 }
 
 export default activeDuels;

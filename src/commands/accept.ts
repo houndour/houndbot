@@ -1,5 +1,4 @@
 import Discord from 'discord.js';
-import activeDuels from '../pools/duel';
 import { DuelHelper } from '../helpers/duel';
 
 export default {
@@ -38,8 +37,7 @@ export default {
       return;
     }
 
-    const i = activeDuels.indexOf(duel);
-    activeDuels[i].participants.push(message.author);
+    duel.addParticipant(message.author);
     message.channel.send(`${message.author} accepted ${target}'s duel.`);
   }
 };

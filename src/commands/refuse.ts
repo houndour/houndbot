@@ -1,5 +1,4 @@
 import Discord from 'discord.js';
-import activeDuels from '../pools/duel';
 import { DuelHelper } from '../helpers/duel';
 
 export default {
@@ -38,7 +37,7 @@ export default {
       return;
     }
 
-    activeDuels.splice(activeDuels.indexOf(duel), 1);
+    duel.destroy();
     message.channel.send(`${message.author} refused ${target}'s duel.`);
   }
 };
