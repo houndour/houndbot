@@ -28,6 +28,13 @@ export class ActiveDuel {
   }
 
   /**
+   * Check if the duel has started
+   */
+  public hasStarted(): boolean {
+    return this.participants.length > 1;
+  }
+
+  /**
    * Destroy the duel instance
    */
   public destroy(): void {

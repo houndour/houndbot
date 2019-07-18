@@ -32,7 +32,7 @@ export default {
       return;
     }
 
-    if (duel.participants.length > 1) {
+    if (duel.hasStarted()) {
       message.reply('the duel has already started');
       return;
     }

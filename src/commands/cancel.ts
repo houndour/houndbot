@@ -11,7 +11,7 @@ export default {
     }
 
     const duel = DuelHelper.getDuelInstance(message.author);
-    if (duel.participants.length > 1) {
+    if (duel.hasStarted()) {
       message.reply('this duel already started');
       return;
     }
