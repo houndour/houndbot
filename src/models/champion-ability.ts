@@ -1,7 +1,7 @@
 import Champion from './champion';
 import { Table, Column, Model, BelongsTo, ForeignKey, AllowNull, Default } from 'sequelize-typescript';
 
-@Table({ tableName: 'champion_abilities' })
+@Table({ tableName: 'champion_abilities', timestamps: false })
 export default class ChampionAbility extends Model<ChampionAbility> {
   @ForeignKey(() => Champion)
   @AllowNull(false)
