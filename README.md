@@ -29,7 +29,7 @@ npm run watch
 * BOT_TOKEN - The token of the [discord bot](https://discordapp.com/developers/applications/)
 * API_KEY - The [Riot Api Key](https://developer.riotgames.com/)
 * PREFIX - The text users will have to type to trigger bot commands (ex: **!bot** {command} {args})
-* DB_DIALECT - Dialect of database: 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'mariadb'
+* DB_DIALECT - Dialect of database: 'mysql' | 'postgres' | 'sqlite' | 'mssql' | 'mariadb'
 * DB_HOST - Hostname of database
 * DB_PORT - Port of database
 * DB_USER - User of database
