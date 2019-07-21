@@ -25,8 +25,8 @@ export default {
 
     const target = message.mentions.users.first();
     if (message.author == target) {
-      message.reply('you can\'t duel yourself');
-      return;
+      //message.reply('you can\'t duel yourself');
+      //return;
     }
 
     if (DuelHelper.isUserInDuel(target)) {
@@ -66,6 +66,6 @@ export default {
     }
 
     new ActiveDuel(message.author, target);
-    message.channel.send(`${message.author} challenged ${target} to a duel. (${process.env.PREFIX} (accept or refuse) duel)`);
+    message.channel.send(`${message.author} challenged ${target} to a duel. (${process.env.PREFIX} [accept or refuse] ${message.author})`);
   }
 };
