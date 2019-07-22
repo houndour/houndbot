@@ -39,5 +39,8 @@ export default {
 
     duel.addParticipant(message.author);
     message.channel.send(`${message.author} accepted ${target}'s duel.`);
+
+    DuelHelper.sendDuelInstructions(message.author);
+    DuelHelper.sendDuelInstructions(target);
   }
 };

@@ -27,4 +27,16 @@ export class DuelHelper {
     }
     return null;
   }
+
+  /**
+   * Send the battle instructions to the user
+   * @param user - The discord user
+   */
+  static sendDuelInstructions(user: Discord.User) {
+    if (!this.isUserInDuel(user)) return;
+
+    const embedMessage = new Discord.RichEmbed().setTitle('Legends Battle').setColor('#0099ff');
+    embedMessage.description = 'Use a skill by typing the corresponding command in the channel where you started the duel.';
+    user.send(embedMessage);
+  }
 }
