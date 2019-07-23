@@ -1,18 +1,25 @@
 import Discord from 'discord.js';
+import UserChampion from '../models/user-champion';
 
 let activeDuels: ActiveDuel[] = [];
+
+export interface Participant {
+  user: Discord.User;
+  userChampion: UserChampion;
+  selectedAbility?: number;
+}
 
 export class ActiveDuel {
   public readonly startDate: Date;
   public challenged: Discord.User;
-  public participants: Discord.User[];
+  public participants: Participant[];
 
   /**
    * Challenges an user to a duel
    * @param challenger - The user who is challenging the other
    * @param challenged - The user who will be challenged
    */
-  constructor(challenger: Discord.User, challenged: Discord.User) {
+  constructor(challenger: Participant, challenged: Discord.User) {
     this.participants = [challenger];
     this.challenged = challenged;
     this.startDate = new Date();
@@ -23,7 +30,7 @@ export class ActiveDuel {
    * Add a participant to the duel
    * @param participant - The user who will be added to the duel
    */
-  public addParticipant(participant: Discord.User): void {
+  public addParticipant(participant: Participant): void {
     this.participants.push(participant);
   }
 

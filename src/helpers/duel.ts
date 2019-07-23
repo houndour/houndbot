@@ -8,8 +8,10 @@ export class DuelHelper {
    */
   static isUserInDuel(user: Discord.User): boolean {
     for (const duel of activeDuels) {
-      if (duel.participants.includes(user)) {
-        return true;
+      for (const participant of duel.participants) {
+        if (participant.user == user) {
+          return true;
+        }
       }
     }
     return false;
@@ -21,8 +23,25 @@ export class DuelHelper {
    */
   static getDuelInstance(user: Discord.User) {
     for (const duel of activeDuels) {
-      if (duel.participants.includes(user)) {
-        return duel;
+      for (const participant of duel.participants) {
+        if (participant.user == user) {
+          return duel;
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Get the abilities the user can use
+   * @param user - The discord user
+   */
+  static getUserChampionAbilities(user: Discord.User) {
+    for (const duel of activeDuels) {
+      for (const participant of duel.participants) {
+        if (participant.user == user) {
+          return participant.userChampion.champion.abilities;
+        }
       }
     }
     return null;
@@ -35,8 +54,16 @@ export class DuelHelper {
   static sendDuelInstructions(user: Discord.User) {
     if (!this.isUserInDuel(user)) return;
 
+    const abilities = this.getUserChampionAbilities(user);
+    
     const embedMessage = new Discord.RichEmbed().setTitle('Legends Battle').setColor('#0099ff');
     embedMessage.description = 'Use a skill by typing the corresponding command in the channel where you started the duel.';
+    embedMessage.addBlankField();
+    embedMessage.addField('Available skills:', `Use ${process.env.PREFIX} use [name of skill]`);
+    embedMessage.addBlankField();
+    for (const ability of abilities) {
+      embedMessage.addField(ability.name, `Damage: ${ability.damage} - Cooldown: ${ability.cooldown} turns - Cost: ${ability.cost} ${ability.costType}`);
+    }
     user.send(embedMessage);
   }
 }

@@ -1,8 +1,10 @@
 import Discord from 'discord.js';
 import User from '../models/user';
 import UserChampion from '../models/user-champion';
+import Champion from '../models/champion';
+import ChampionAbility from '../models/champion-ability';
 import { DuelHelper } from '../helpers/duel';
-import { ActiveDuel } from '../pools/duel';
+import { ActiveDuel, Participant } from '../pools/duel';
 
 export default {
   name: 'duel',
@@ -34,7 +36,7 @@ export default {
       return;
     }
 
-    const userChampCount = await UserChampion.count({
+    const userChampion = await UserChampion.findOne({
       where: {
         selected: true,
       },
@@ -43,10 +45,13 @@ export default {
         where: {
           discordId: message.author.id,
         },
+      }, {
+        model: Champion,
+        include: [ChampionAbility]
       }],
     });
 
-    if (userChampCount < 1) {
+    if (!userChampion) {
       message.reply('you don\'t have a selected champion');
       return;
     }
@@ -65,7 +70,12 @@ export default {
       return;
     }
 
-    new ActiveDuel(message.author, target);
+    const participant: Participant = {
+      user: message.author,
+      userChampion: userChampion,
+    };
+
+    new ActiveDuel(participant, target);
     message.channel.send(`${message.author} challenged ${target} to a duel. (${process.env.PREFIX} [accept or refuse] ${message.author})`);
   }
 };

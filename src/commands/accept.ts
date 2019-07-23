@@ -1,5 +1,9 @@
 import Discord from 'discord.js';
 import { DuelHelper } from '../helpers/duel';
+import UserChampion from '../models/user-champion';
+import User from '../models/user';
+import Champion from '../models/champion';
+import ChampionAbility from '../models/champion-ability';
 
 export default {
   name: 'accept',
@@ -37,7 +41,27 @@ export default {
       return;
     }
 
-    duel.addParticipant(message.author);
+    const userChampion = await UserChampion.findOne({
+      where: {
+        selected: true,
+      },
+      include: [{
+        model: User,
+        where: {
+          discordId: message.author.id,
+        },
+      }, {
+        model: Champion,
+        include: [ChampionAbility]
+      }],
+    });
+
+    if (!userChampion) {
+      message.reply('you don\'t have a selected champion');
+      return;
+    }
+
+    duel.addParticipant({ user: message.author, userChampion });
     message.channel.send(`${message.author} accepted ${target}'s duel.`);
 
     DuelHelper.sendDuelInstructions(message.author);
