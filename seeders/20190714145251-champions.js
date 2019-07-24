@@ -6,16 +6,19 @@ module.exports = {
       id: 1,
       name: 'Annie',
       title: 'The dark child',
+      health: '320',
       is_starter: true,
     }, {
       id: 2,
       name: 'Olaf',
       title: 'The berserker',
+      health: '475',
       is_starter: true,
     }, {
       id: 3,
       name: 'Galio',
       title: 'The colossus',
+      health: '580',
       is_starter: true,
     }], {});
 

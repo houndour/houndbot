@@ -15,6 +15,10 @@ export default class Champion extends Model<Champion> {
   @Column
   title!: string;
 
+  @AllowNull(false)
+  @Column
+  health!: number;
+
   @Default(false)
   @AllowNull(false)
   @Column({ field: 'is_starter' })

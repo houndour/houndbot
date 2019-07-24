@@ -38,6 +38,8 @@ export default {
       championId: champion.id,
       level: 1,
       experience: 0,
+      health: champion.health,
+      maxHealth: champion.health,
       selected: true,
     };
 

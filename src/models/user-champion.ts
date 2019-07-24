@@ -28,6 +28,14 @@ export default class UserChampion extends Model<UserChampion> {
   @Column
   experience!: number;
 
+  @AllowNull(false)
+  @Column
+  health!: number;
+
+  @AllowNull(false)
+  @Column({ field: 'max_health' })
+  maxHealth!: number;
+
   @Default(false)
   @AllowNull(false)
   @Column
