@@ -80,6 +80,7 @@ export class ActiveDuel {
 
     /**
      * Send message if duel ended
+     * or reset variables if round ended
      */
     if (losers.length == 2) {
       channel.send('Both champions died, the duel ended in a draw.');
@@ -88,6 +89,13 @@ export class ActiveDuel {
     else if (losers.length == 1) {
       channel.send(`${losers[0].user} lost the duel.`);
       this.destroy();
+    }
+    else {
+      for (const participant of this.participants) {
+        participant.selectedAbility = null;
+        channel.send(`(${participant.user.username}) ${participant.userChampion.champion.name}: ${participant.userChampion.health} / ${participant.userChampion.maxHealth}`);
+      }
+      channel.send(`Round ended, select your abilities.`);
     }
   }
 
