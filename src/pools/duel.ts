@@ -6,7 +6,7 @@ let activeDuels: ActiveDuel[] = [];
 export interface Participant {
   user: Discord.User;
   userChampion: UserChampion;
-  selectedAbility?: number;
+  selectedAbilityId?: number;
 }
 
 export class ActiveDuel {

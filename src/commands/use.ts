@@ -22,7 +22,7 @@ export default {
     }
 
     const participant = duel.participants.find((p) => { return p.user == message.author });
-    if (participant.selectedAbility) {
+    if (participant.selectedAbilityId) {
       message.reply('you already selected an ability, wait next turn');
       return;
     }
@@ -34,7 +34,7 @@ export default {
       return;
     }
 
-    participant.selectedAbility = ability.id;
+    participant.selectedAbilityId = ability.id;
     message.channel.send(`${message.author} selected the ability: ${ability.name}`);
 
     /**
