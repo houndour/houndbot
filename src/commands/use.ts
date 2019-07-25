@@ -1,4 +1,4 @@
-import Discord from 'discord.js';
+import Discord, { TextChannel } from 'discord.js';
 import { DuelHelper } from '../helpers/duel';
 
 export default {
@@ -22,7 +22,7 @@ export default {
     }
 
     const participant = duel.participants.find((p) => { return p.user == message.author });
-    if (participant.selectedAbilityId) {
+    if (participant.selectedAbility) {
       message.reply('you already selected an ability, wait next turn');
       return;
     }
@@ -34,14 +34,9 @@ export default {
       return;
     }
 
-    participant.selectedAbilityId = ability.id;
+    participant.selectedAbility = ability;
     message.channel.send(`${message.author} selected the ability: ${ability.name}`);
 
-    /**
-     * TO DO:
-     * 
-     * After both users selected an ability, calculate the damages and reduce champions health,
-     * if one of them died, declare winner, if both died, declare draw
-     */
+    duel.battle(<TextChannel>message.channel);
   }
 };
