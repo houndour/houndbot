@@ -61,7 +61,7 @@ export default {
       return;
     }
 
-    duel.addParticipant({ user: message.author, userChampion });
+    duel.addParticipant({ user: message.author, userChampion, abilities: [] });
     message.channel.send(`${message.author} accepted ${target}'s duel.`);
 
     DuelHelper.sendDuelInstructions(message.author);
