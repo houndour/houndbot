@@ -27,7 +27,7 @@ module.exports = {
       {
         champion_id: 1,
         name: 'Disintegrate',
-        damage: 80,
+        damage: 40,
         cooldown: 0,
         cost: 60,
       },
@@ -35,13 +35,13 @@ module.exports = {
         champion_id: 1,
         name: 'Incinerate',
         damage: 85,
-        cooldown: 1,
+        cooldown: 2,
         cost: 70,
       },
       {
         champion_id: 1,
         name: 'Summon: Tibbers',
-        damage: 280,
+        damage: 215,
         cooldown: 4,
         cost: 100,
       },
@@ -49,8 +49,8 @@ module.exports = {
       {
         champion_id: 2,
         name: 'Undertow',
-        damage: 75,
-        cooldown: 0,
+        damage: 60,
+        cooldown: 1,
         cost: 70,
       },
       {
@@ -71,14 +71,14 @@ module.exports = {
       {
         champion_id: 3,
         name: 'Winds of War',
-        damage: 45,
+        damage: 20,
         cooldown: 0,
         cost: 85,
       },
       {
         champion_id: 3,
         name: 'Justice Punch',
-        damage: 80,
+        damage: 30,
         cooldown: 2,
         cost: 90,
       },
