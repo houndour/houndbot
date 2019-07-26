@@ -71,14 +71,14 @@ module.exports = {
       {
         champion_id: 3,
         name: 'Winds of War',
-        damage: 90,
+        damage: 45,
         cooldown: 0,
         cost: 85,
       },
       {
         champion_id: 3,
         name: 'Justice Punch',
-        damage: 110,
+        damage: 80,
         cooldown: 2,
         cost: 90,
       },
