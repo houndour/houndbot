@@ -63,9 +63,9 @@ export class ActiveDuel {
      * Remove champion's HP
      */
     for (const participant of this.participants) {
-      for (const oponent of this.participants) {
-        if (participant == oponent) continue;
-        participant.userChampion.health -= oponent.selectedAbility.damage;
+      for (const opponent of this.participants) {
+        if (participant == opponent) continue;
+        participant.userChampion.health -= opponent.selectedAbility.damage;
       }
     }
 
