@@ -34,6 +34,18 @@ export default {
       return;
     }
 
+    const tempAbility = participant.abilities.find((ab) => { return ab == ability });
+    if (tempAbility) {
+      if (tempAbility.cooldown > 0) {
+        message.reply('this ability is in cooldown');
+        return;
+      }
+      tempAbility.cooldown = ability.cooldown;
+    }
+    else {
+      participant.abilities.push(ability);
+    }
+
     participant.selectedAbility = ability;
     message.channel.send(`${message.author} selected the ability: ${ability.name}`);
 

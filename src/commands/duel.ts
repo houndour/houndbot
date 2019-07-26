@@ -73,6 +73,7 @@ export default {
     const participant: Participant = {
       user: message.author,
       userChampion: userChampion,
+      abilities: [],
     };
 
     new ActiveDuel(participant, target);

@@ -8,6 +8,7 @@ export interface Participant {
   user: Discord.User;
   userChampion: UserChampion;
   selectedAbility?: ChampionAbility;
+  abilities: ChampionAbility[];
 }
 
 export class ActiveDuel {
@@ -92,8 +93,13 @@ export class ActiveDuel {
     }
     else {
       for (const participant of this.participants) {
+        for (const ability of participant.abilities) {
+          if (ability.cooldown > 0 && participant.selectedAbility != ability) {
+            ability.cooldown--;
+          }
+        }
         participant.selectedAbility = null;
-        channel.send(`(${participant.user.username}) ${participant.userChampion.champion.name}: ${participant.userChampion.health} / ${participant.userChampion.maxHealth}`);
+        channel.send(`(${participant.user.username}) ${participant.userChampion.champion.name}: ${participant.userChampion.health} / ${participant.userChampion.maxHealth} HP`);
       }
       channel.send(`Round ended, select your abilities.`);
     }
