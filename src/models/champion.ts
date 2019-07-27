@@ -19,6 +19,10 @@ export default class Champion extends Model<Champion> {
   @Column
   health!: number;
 
+  @AllowNull(false)
+  @Column({ field: 'mana_regen' })
+  manaRegen!: number;
+
   @Default(false)
   @AllowNull(false)
   @Column({ field: 'is_starter' })

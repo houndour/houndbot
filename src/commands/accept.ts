@@ -61,6 +61,9 @@ export default {
       return;
     }
 
+    userChampion.health = userChampion.maxHealth;
+    userChampion.mana = 50;
+
     duel.addParticipant({ user: message.author, userChampion, abilities: [] });
     message.channel.send(`${message.author} accepted ${target}'s duel.`);
 

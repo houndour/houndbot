@@ -7,18 +7,21 @@ module.exports = {
       name: 'Annie',
       title: 'The dark child',
       health: '320',
+      mana_regen: '25',
       is_starter: true,
     }, {
       id: 2,
       name: 'Olaf',
       title: 'The berserker',
       health: '475',
+      mana_regen: '20',
       is_starter: true,
     }, {
       id: 3,
       name: 'Galio',
       title: 'The colossus',
       health: '580',
+      mana_regen: '15',
       is_starter: true,
     }], {});
 
@@ -29,14 +32,14 @@ module.exports = {
         name: 'Disintegrate',
         damage: 40,
         cooldown: 0,
-        cost: 60,
+        cost: 10,
       },
       {
         champion_id: 1,
         name: 'Incinerate',
         damage: 85,
         cooldown: 2,
-        cost: 70,
+        cost: 20,
       },
       {
         champion_id: 1,
@@ -51,14 +54,14 @@ module.exports = {
         name: 'Undertow',
         damage: 60,
         cooldown: 1,
-        cost: 70,
+        cost: 10,
       },
       {
         champion_id: 2,
         name: 'Vicious Strikes',
         damage: 25,
         cooldown: 0,
-        cost: 10,
+        cost: 5,
       },
       {
         champion_id: 2,
@@ -73,14 +76,14 @@ module.exports = {
         name: 'Winds of War',
         damage: 20,
         cooldown: 0,
-        cost: 85,
+        cost: 5,
       },
       {
         champion_id: 3,
         name: 'Justice Punch',
         damage: 30,
         cooldown: 2,
-        cost: 90,
+        cost: 10,
       },
       {
         champion_id: 3,

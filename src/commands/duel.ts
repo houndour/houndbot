@@ -70,6 +70,9 @@ export default {
       return;
     }
 
+    userChampion.health = userChampion.maxHealth;
+    userChampion.mana = 50;
+
     const participant: Participant = {
       user: message.author,
       userChampion: userChampion,

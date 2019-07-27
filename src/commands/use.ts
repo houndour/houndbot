@@ -34,6 +34,11 @@ export default {
       return;
     }
 
+    if (ability.cost > participant.userChampion.mana) {
+      message.reply('you don\'t have enough mana for this ability');
+      return;
+    }
+
     const tempAbility = participant.abilities.find((ab) => { return ab == ability });
     if (tempAbility) {
       if (tempAbility.cooldown > 0) {

@@ -98,8 +98,12 @@ export class ActiveDuel {
             ability.cooldown--;
           }
         }
+
+        participant.userChampion.mana -= participant.selectedAbility.cost;
+        participant.userChampion.mana = ((participant.userChampion.mana + participant.userChampion.champion.manaRegen) > 100) ? 100 : participant.userChampion.mana + participant.userChampion.champion.manaRegen;
+
         participant.selectedAbility = null;
-        channel.send(`(${participant.user.username}) ${participant.userChampion.champion.name}: ${participant.userChampion.health} / ${participant.userChampion.maxHealth} HP`);
+        channel.send(`(${participant.user.username}) ${participant.userChampion.champion.name}: ${participant.userChampion.health} / ${participant.userChampion.maxHealth} HP | ${participant.userChampion.mana} / 100 MP`);
       }
       channel.send(`Round ended, select your abilities.`);
     }

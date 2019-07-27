@@ -36,6 +36,10 @@ export default class UserChampion extends Model<UserChampion> {
   @Column({ field: 'max_health' })
   maxHealth!: number;
 
+  @AllowNull(false)
+  @Column
+  mana!: number;
+
   @Default(false)
   @AllowNull(false)
   @Column

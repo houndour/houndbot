@@ -38,6 +38,7 @@ export default {
       championId: champion.id,
       level: 1,
       experience: 0,
+      mana: 50,
       health: champion.health,
       maxHealth: champion.health,
       selected: true,
