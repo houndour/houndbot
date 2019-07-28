@@ -55,7 +55,7 @@ export class DuelHelper {
     if (!this.isUserInDuel(user)) return;
 
     const abilities = this.getUserChampionAbilities(user);
-    
+
     const embedMessage = new Discord.RichEmbed().setTitle('Legends Battle').setColor('#0099ff');
     embedMessage.description = 'Use a skill by typing the corresponding command in the channel where you started the duel.';
     embedMessage.addBlankField();

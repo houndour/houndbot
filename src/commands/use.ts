@@ -54,6 +54,6 @@ export default {
     participant.selectedAbility = ability;
     message.channel.send(`${message.author} selected the ability: ${ability.name}`);
 
-    duel.battle(<TextChannel>message.channel);
+    duel.battle();
   }
 };

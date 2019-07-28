@@ -1,4 +1,4 @@
-import Discord from 'discord.js';
+import Discord, { TextChannel } from 'discord.js';
 import User from '../models/user';
 import UserChampion from '../models/user-champion';
 import Champion from '../models/champion';
@@ -79,7 +79,7 @@ export default {
       abilities: [],
     };
 
-    new ActiveDuel(participant, target);
+    new ActiveDuel(participant, target, <TextChannel>message.channel);
     message.channel.send(`${message.author} challenged ${target} to a duel. (${process.env.PREFIX} [accept or refuse] ${message.author})`);
   }
 };

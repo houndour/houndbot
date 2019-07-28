@@ -69,5 +69,7 @@ export default {
 
     DuelHelper.sendDuelInstructions(message.author);
     DuelHelper.sendDuelInstructions(target);
+
+    duel.sendSummary();
   }
 };
