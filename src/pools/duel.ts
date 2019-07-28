@@ -21,6 +21,7 @@ export class ActiveDuel {
    * Challenges an user to a duel
    * @param challenger - The user who is challenging the other
    * @param challenged - The user who will be challenged
+   * @param channel - Channel which is happening the battle
    */
   constructor(challenger: Participant, challenged: Discord.User, channel: TextChannel) {
     this.participants = [challenger];
@@ -48,7 +49,6 @@ export class ActiveDuel {
   /**
    * Check if both players selected an ability
    * and starts the battle for the round
-   * @param channel - Channel which is happening the battle
    */
   public async battle() {
     let playersReady = 0;
@@ -82,7 +82,7 @@ export class ActiveDuel {
     }
 
     /**
-     * Send message if duel ended
+     * Destroy instance if duel ended
      * or reset variables if round ended
      */
     if (losers.length == 2) {
@@ -112,7 +112,7 @@ export class ActiveDuel {
   }
   
   /**
-   * Send the duel summary (current champions health, mana...)
+   * Send the duel summary in an embed message
    */
   public async sendSummary() {
     if (!this.hasStarted()) return;
