@@ -1,6 +1,7 @@
 import Discord, { TextChannel } from 'discord.js';
 import UserChampion from '../models/user-champion';
 import ChampionAbility from '../models/champion-ability';
+import { DuelHelper } from '../helpers/duel';
 
 let activeDuels: ActiveDuel[] = [];
 
@@ -86,12 +87,21 @@ export class ActiveDuel {
      * or reset variables if round ended
      */
     if (losers.length == 2) {
+      const exp = Math.floor(Math.random() * 2) + 1;
+      for (const loser of losers) {
+        DuelHelper.giveExperience(loser.userChampion, exp);
+      }
       this.channel.send('Both champions died, the duel ended in a draw.');
       this.destroy();
     }
     else if (losers.length == 1) {
       const winner = this.participants.find((w) => { return w.user != losers[0].user });
       this.channel.send(`${winner.user} defeated ${losers[0].user} in the duel.`);
+
+      const exp = Math.floor(Math.random() * 5) + 3;
+      DuelHelper.giveExperience(winner.userChampion, exp);
+      DuelHelper.giveExperience(losers[0].userChampion, exp / 2);
+
       this.destroy();
     }
     else {
@@ -110,7 +120,7 @@ export class ActiveDuel {
       this.channel.send(`Round ended, select your abilities.`);
     }
   }
-  
+
   /**
    * Send the duel summary in an embed message
    */
@@ -121,7 +131,7 @@ export class ActiveDuel {
     embedMessage.setColor('#0099ff');
     embedMessage.setTitle(`${this.participants[0].user.username} VS ${this.participants[1].user.username}`);
     embedMessage.setThumbnail('https://cdn2.iconfinder.com/data/icons/long-live-the-queen-1/60/swords-512.png');
-    
+
     embedMessage.addField(this.participants[0].userChampion.champion.name, this.participants[0].userChampion.champion.title, true);
     embedMessage.addField(this.participants[1].userChampion.champion.name, this.participants[1].userChampion.champion.title, true);
 

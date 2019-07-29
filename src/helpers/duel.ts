@@ -1,5 +1,6 @@
 import Discord from "discord.js";
 import activeDuels from "../pools/duel";
+import UserChampion from "../models/user-champion";
 
 export class DuelHelper {
   /**
@@ -65,5 +66,19 @@ export class DuelHelper {
       embedMessage.addField(ability.name, `Damage: ${ability.damage} - Cooldown: ${ability.cooldown} turns - Cost: ${ability.cost} ${ability.costType}`);
     }
     user.send(embedMessage);
+  }
+
+  /**
+   * Gives experience to a champion
+   * @param champion - The champion who will receive experience
+   * @param amount - Amount of experience
+   */
+  static giveExperience(champion: UserChampion, amount: number): void {
+    champion.experience += amount;
+    if (champion.experience > champion.level * 10) {
+      champion.level++;
+      champion.experience = 0;
+    }
+    champion.save();
   }
 }
