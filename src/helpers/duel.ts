@@ -78,6 +78,8 @@ export class DuelHelper {
     if (champion.experience > champion.level * 10) {
       champion.level++;
       champion.experience = 0;
+      champion.maxHealth += champion.champion.healthPerLevel;
+      champion.health = champion.maxHealth;
     }
     champion.save();
   }

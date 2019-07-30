@@ -20,6 +20,10 @@ export default class Champion extends Model<Champion> {
   health!: number;
 
   @AllowNull(false)
+  @Column({ field: 'health_per_level' })
+  healthPerLevel!: number;
+
+  @AllowNull(false)
   @Column({ field: 'mana_regen' })
   manaRegen!: number;
 
