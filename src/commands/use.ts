@@ -1,4 +1,4 @@
-import Discord, { TextChannel } from 'discord.js';
+import Discord from 'discord.js';
 import { DuelHelper } from '../helpers/duel';
 
 export default {
