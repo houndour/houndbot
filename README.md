@@ -25,6 +25,11 @@ npm start
 npm run watch
 ```
 
+## Pictures
+![start](https://i.imgur.com/sU2F9B7.png)
+![champ-details](https://i.imgur.com/zjwQCxr.png)
+![duel](https://i.imgur.com/5nwk0oH.png)
+
 ## Env variables
 * BOT_TOKEN - The token of the [discord bot](https://discordapp.com/developers/applications/)
 * API_KEY - The [Riot Api Key](https://developer.riotgames.com/)
